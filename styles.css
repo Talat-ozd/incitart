@@ -1,0 +1,626 @@
+/* ============================================
+   İncitart – Editorial B2B Landing Page
+   CSS Variables, Flexbox, Grid | Mobile-First
+   ============================================ */
+
+/* --------------------------------------------
+   1. Reset & Base
+   -------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-bg-primary);
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+}
+
+/* --------------------------------------------
+   2. CSS Custom Properties (Easy palette swap)
+   -------------------------------------------- */
+:root {
+  /* Colors (hafif kontrast: metin koyu, vurgu belirgin) */
+  --color-bg-primary: #FFFDF5;
+  --color-accent: #d4a99a;
+  --color-text: #2a2a2a;
+  --color-text-light: #555555;
+  --color-white: #FFFFFF;
+
+  /* Typography */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Spacing */
+  --section-padding: clamp(2rem, 5vw, 6rem);
+  --content-max: 75rem;
+
+  /* Transitions */
+  --transition-smooth: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  --reveal-delay: 0.15s;
+}
+
+/* --------------------------------------------
+   3. Typography
+   -------------------------------------------- */
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.hero__headline {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.contact__title,
+.value-props__title,
+.menu__title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 600;
+}
+
+/* --------------------------------------------
+   4. Layout – Sticky Nav
+   -------------------------------------------- */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem var(--section-padding);
+  background: transparent;
+  transition: background-color var(--transition-smooth);
+}
+
+.nav.scrolled {
+  background: rgba(255, 253, 245, 0.95);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+}
+
+.nav__logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.nav__cta {
+  padding: 0.6rem 1.25rem;
+  border: 1px solid var(--color-text);
+  border-radius: 2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color var(--transition-smooth), color var(--transition-smooth);
+}
+
+.nav__cta:hover {
+  background: var(--color-text);
+  color: var(--color-bg-primary);
+}
+
+/* --------------------------------------------
+   5. Buttons (ghost + primary)
+   -------------------------------------------- */
+.btn-ghost {
+  /* Used on nav – see .nav__cta */
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: var(--color-text);
+  color: var(--color-bg-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 0.25rem;
+  transition: background-color var(--transition-smooth), transform 0.2s;
+}
+
+.btn-primary:hover {
+  background: #222;
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------
+   6. Hero Section (100vh)
+   -------------------------------------------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--section-padding);
+  overflow: hidden;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background: url('assets/closeup-top-view-chocolate-cake-rounded-with-berry-tarts-grey-plate-white-wooden-table.jpg') center / cover no-repeat;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: var(--content-max);
+  text-align: center;
+}
+
+.hero__headline {
+  color: var(--color-white);
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero__subline {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  max-width: 32ch;
+  margin: 0 auto;
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  color: var(--color-white);
+  opacity: 0.85;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.hero__scroll-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  margin: 0 auto;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
+}
+
+/* --------------------------------------------
+   6b. Value props (merged: Taze Teslimat + İmza Tarifler)
+   -------------------------------------------- */
+.value-props {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--section-padding);
+  align-content: center;
+  padding: var(--section-padding);
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .value-props {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    padding: 3rem var(--section-padding);
+  }
+}
+
+.value-props__col {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 0.75rem;
+  align-content: start;
+}
+
+/* Aynı hizada başlasın diye başlık alanı sabit yükseklik (2 satırlık alan) */
+.value-props__title {
+  min-height: 2.6em;
+  margin-bottom: 0;
+  color: var(--color-text);
+  display: flex;
+  align-items: flex-start;
+}
+
+.value-props__text {
+  font-size: 1.125rem;
+  color: var(--color-text-light);
+  max-width: 42ch;
+}
+
+.value-props__media {
+  aspect-ratio: 4 / 3;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: var(--color-accent);
+  margin-top: 0;
+}
+
+.value-props__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --------------------------------------------
+   6c. Interactive menu (tabs + cards)
+   -------------------------------------------- */
+.menu {
+  padding: var(--section-padding);
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.menu__title {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--color-text);
+  font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+}
+
+.menu__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2.25rem;
+}
+
+.menu__tab {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text);
+  background: transparent;
+  border: 1px solid var(--color-text);
+  border-radius: 2rem;
+  transition: background var(--transition-smooth), color var(--transition-smooth);
+}
+
+.menu__tab:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.menu__tab.is-active {
+  background: var(--color-text);
+  color: var(--color-bg-primary);
+}
+
+.menu__panel {
+  display: none;
+}
+
+.menu__panel.is-active {
+  display: block;
+}
+
+.menu__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .menu__grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.75rem;
+  }
+}
+
+.menu__card {
+  background: var(--color-white);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.menu__card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.menu__card-img {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--color-accent);
+}
+
+.menu__card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.menu__card-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 0.9rem 1.1rem;
+  color: var(--color-text);
+}
+
+.menu__note {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--color-text-light);
+  max-width: 50ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --------------------------------------------
+   7. Product Showcases (full-viewport sections) – legacy if needed
+   -------------------------------------------- */
+.showcase {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  align-items: center;
+  gap: var(--section-padding);
+  padding: var(--section-padding);
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .showcase {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 3rem;
+    padding: 3rem var(--section-padding);
+  }
+
+  .showcase--left .showcase__media { order: 1; }
+  .showcase--left .showcase__content { order: 2; }
+  .showcase--right .showcase__media { order: 2; }
+  .showcase--right .showcase__content { order: 1; }
+}
+
+@media (min-width: 1024px) {
+  .showcase {
+    gap: 4rem;
+    padding: 4rem var(--section-padding);
+  }
+}
+
+.showcase__media {
+  min-height: 50vh;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: var(--color-accent);
+}
+
+.showcase__media img {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+}
+
+.showcase__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0.5rem;
+}
+
+.showcase__title {
+  margin-bottom: 1rem;
+  color: var(--color-text);
+}
+
+.showcase__text {
+  font-size: 1.125rem;
+  color: var(--color-text-light);
+  max-width: 42ch;
+}
+
+/* --------------------------------------------
+   8. Contact / B2B Conversion
+   -------------------------------------------- */
+.contact {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--section-padding);
+  align-items: center;
+  padding: var(--section-padding);
+  max-width: var(--content-max);
+  margin: 0 auto;
+  background: linear-gradient(180deg, var(--color-bg-primary) 0%, rgba(212, 169, 154, 0.18) 100%);
+}
+
+@media (min-width: 768px) {
+  .contact {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    padding: 4rem var(--section-padding);
+  }
+}
+
+.contact__brand {
+  padding: 0 0.5rem;
+}
+
+.contact__title {
+  margin-bottom: 1rem;
+  color: var(--color-text);
+}
+
+.contact__text {
+  font-size: 1.125rem;
+  color: var(--color-text-light);
+  max-width: 38ch;
+}
+
+.contact__form-wrapper {
+  background: var(--color-white);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact__form label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 0.25rem;
+}
+
+.contact__form input,
+.contact__form textarea {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.25rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text);
+  background: var(--color-white);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.contact__form input:focus,
+.contact__form textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(212, 169, 154, 0.3);
+}
+
+.contact__form input::placeholder,
+.contact__form textarea::placeholder {
+  color: #777;
+}
+
+.contact__form-feedback {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  min-height: 1.5em;
+}
+
+.contact__form-feedback.success { color: #2e7d32; }
+.contact__form-feedback.error { color: #c62828; }
+
+/* --------------------------------------------
+   9. WhatsApp FAB
+   -------------------------------------------- */
+.fab {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 99;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-accent);
+  color: var(--color-white);
+  border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(212, 169, 154, 0.5);
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: fab-pulse 2.5s ease-in-out infinite;
+}
+
+.fab:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 24px rgba(212, 169, 154, 0.6);
+}
+
+.fab__icon {
+  width: 28px;
+  height: 28px;
+}
+
+@keyframes fab-pulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(212, 169, 154, 0.5); }
+  50% { box-shadow: 0 4px 28px rgba(212, 169, 154, 0.7); }
+}
+
+/* --------------------------------------------
+   10. Reveal on Scroll (base state)
+   -------------------------------------------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--transition-smooth), transform var(--transition-smooth);
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children if needed */
+.hero__content [data-reveal]:nth-child(1) { transition-delay: 0.1s; }
+.hero__content [data-reveal]:nth-child(2) { transition-delay: 0.25s; }
+.hero__content [data-reveal]:nth-child(3) { transition-delay: 0.4s; }
+
+.showcase [data-reveal]:nth-child(1) { transition-delay: 0s; }
+.showcase [data-reveal]:nth-child(2) { transition-delay: var(--reveal-delay); }
+
+.value-props [data-reveal]:nth-child(1) { transition-delay: 0s; }
+.value-props [data-reveal]:nth-child(2) { transition-delay: var(--reveal-delay); }
+
+.menu [data-reveal] { transition-delay: 0s; }
+
+.contact [data-reveal]:nth-child(1) { transition-delay: 0s; }
+.contact [data-reveal]:nth-child(2) { transition-delay: var(--reveal-delay); }

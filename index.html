@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="İncitart - İşletmeniz için özel tasarlanmış zarif tartlar. Kafeler ve pastaneler için B2B çözümler.">
+  <title>İncitart | Zarif Tartlar, İşletmeniz İçin</title>
+  <!-- Google Fonts: Playfair Display (headings), Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Sticky Navigation -->
+  <header class="nav" id="main-nav" role="banner">
+    <a href="#" class="nav__logo" aria-label="İncitart Ana Sayfa">İncitart</a>
+    <a href="#contact" class="nav__cta btn-ghost">Teklif Al</a>
+  </header>
+
+  <main>
+    <!-- Hero Section: full-viewport -->
+    <section class="hero" id="hero" aria-label="Ana tanıtım">
+      <div class="hero__bg" role="img" aria-label="Premium tart görseli"></div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <h1 class="hero__headline" data-reveal>İşletmeniz İçin Özel Tasarlanmış Zarif Tartlar.</h1>
+        <p class="hero__subline" data-reveal>Kafeler ve pastaneler için özenle hazırlanan, günlük taze ürünler.</p>
+      </div>
+      <a href="#value-props" class="hero__scroll" aria-label="Aşağı kaydır">
+        <span class="hero__scroll-icon"></span>
+      </a>
+    </section>
+
+    <!-- Value props: Taze Teslimat + İmza Tarifler (merged) -->
+    <section class="value-props" id="value-props" aria-label="Değer önerileri">
+      <div class="value-props__col" data-reveal>
+        <h2 class="value-props__title">Her Gün Taze Teslimat</h2>
+        <p class="value-props__text">Sabahın erken saatlerinde kapınıza ulaşan taze tartlar. Müşterilerinize her gün en taze ürünü sunun.</p>
+        <div class="value-props__media">
+          <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=800&q=80" alt="Taze tart ve pastane ürünleri" loading="lazy">
+        </div>
+      </div>
+      <div class="value-props__col" data-reveal>
+        <h2 class="value-props__title">İmza Tariflerimiz</h2>
+        <p class="value-props__text">İşletmenize özel, rakiplerinizden farklılaşmanızı sağlayan özgün tarifler. Kalite ve lezzet garantisi.</p>
+        <div class="value-props__media">
+          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80" alt="El yapımı tart hazırlığı" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive menu: Tart bases + Sweet / Savory -->
+    <section class="menu" id="menu" aria-labelledby="menu-title">
+      <h2 id="menu-title" class="menu__title" data-reveal>Tart Tabanları & Çeşitler</h2>
+      <div class="menu__tabs" role="tablist" aria-label="Menü kategorileri">
+        <button type="button" class="menu__tab is-active" role="tab" aria-selected="true" aria-controls="panel-bases" id="tab-bases" data-menu-tab="bases">Tart Tabanları</button>
+        <button type="button" class="menu__tab" role="tab" aria-selected="false" aria-controls="panel-sweet" id="tab-sweet" data-menu-tab="sweet">Tatlı</button>
+        <button type="button" class="menu__tab" role="tab" aria-selected="false" aria-controls="panel-savory" id="tab-savory" data-menu-tab="savory">Tuzlu</button>
+      </div>
+      <div id="panel-bases" class="menu__panel is-active" role="tabpanel" aria-labelledby="tab-bases">
+        <div class="menu__grid">
+          <article class="menu__card" data-reveal>
+            <div class="menu__card-img"><img src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=400&q=80" alt="" loading="lazy"></div>
+            <h3 class="menu__card-title">4 cm Yuvarlak Tart Tabanı</h3>
+          </article>
+          <article class="menu__card" data-reveal>
+            <div class="menu__card-img"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&q=80" alt="" loading="lazy"></div>
+            <h3 class="menu__card-title">4 cm Kare Tart Tabanı</h3>
+          </article>
+          <article class="menu__card" data-reveal>
+            <div class="menu__card-img"><img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&q=80" alt="" loading="lazy"></div>
+            <h3 class="menu__card-title">6 cm Yuvarlak Tart Tabanı</h3>
+          </article>
+          <article class="menu__card" data-reveal>
+            <div class="menu__card-img"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&q=80" alt="" loading="lazy"></div>
+            <h3 class="menu__card-title">9×3 Oval Tart Tabanı</h3>
+          </article>
+          <article class="menu__card" data-reveal>
+            <div class="menu__card-img"><img src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=400&q=80" alt="" loading="lazy"></div>
+            <h3 class="menu__card-title">9 cm Yuvarlak Tart Tabanı</h3>
+          </article>
+        </div>
+      </div>
+      <div id="panel-sweet" class="menu__panel" role="tabpanel" aria-labelledby="tab-sweet" hidden>
+        <div class="menu__grid">
+          <article class="menu__card" data-reveal><div class="menu__card-img"><img src="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=400&q=80" alt="" loading="lazy"></div><h3 class="menu__card-title">Kakao</h3></article>
+          <article class="menu__card" data-reveal><div class="menu__card-img"><img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&q=80" alt="" loading="lazy"></div><h3 class="menu__card-title">Sade</h3></article>
+          <article class="menu__card" data-reveal><div class="menu__card-img"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&q=80" alt="" loading="lazy"></div><h3 class="menu__card-title">Orman Meyvesi</h3></article>
+          <article class="menu__card" data-reveal><div class="menu__card-img"><img src="https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?w=400&q=80" alt="" loading="lazy"></div><h3 class="menu__card-title">Çilek</h3></article>
+          <article class="menu__card" data-reveal><div class="menu__card-img"><img src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=400&q=80" alt="" loading="lazy"></div><h3 class="menu__card-title">Portakal</h3></article>
+          <article class="menu__card" data-reveal><div class="menu__card-img"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&q=80" alt="" loading="lazy"></div><h3 class="menu__card-title">Antep Fıstığı</h3></article>
+        </div>
+      </div>
+      <div id="panel-savory" class="menu__panel" role="tabpanel" aria-labelledby="tab-savory" hidden>
+        <div class="menu__grid">
+          <article class="menu__card" data-reveal><div class="menu__card-img"><img src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=400&q=80" alt="" loading="lazy"></div><h3 class="menu__card-title">Sade Tuzlu</h3></article>
+          <article class="menu__card" data-reveal><div class="menu__card-img"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&q=80" alt="" loading="lazy"></div><h3 class="menu__card-title">Acı Biber</h3></article>
+          <article class="menu__card" data-reveal><div class="menu__card-img"><img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&q=80" alt="" loading="lazy"></div><h3 class="menu__card-title">Kuru Sebze</h3></article>
+          <article class="menu__card" data-reveal><div class="menu__card-img"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&q=80" alt="" loading="lazy"></div><h3 class="menu__card-title">Baharat</h3></article>
+          <article class="menu__card" data-reveal><div class="menu__card-img"><img src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=400&q=80" alt="" loading="lazy"></div><h3 class="menu__card-title">Zeytin</h3></article>
+        </div>
+      </div>
+      <p class="menu__note" data-reveal>Yukarıda yazılı çeşitlerin hepsi tüm tart tabanı ölçülerinde mevcuttur.</p>
+    </section>
+
+    <!-- B2B Conversion: Inquiry Form -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="contact__brand" data-reveal>
+        <h2 id="contact-title" class="contact__title">İşletmeniz İçin Birlikte Çalışalım</h2>
+        <p class="contact__text">Talebinizi iletin, size özel teklif ve teslimat koşullarını birlikte belirleyelim.</p>
+      </div>
+      <div class="contact__form-wrapper" data-reveal>
+        <form class="contact__form" id="inquiry-form" action="#" method="post" novalidate>
+          <label for="company">Firma Adı</label>
+          <input type="text" id="company" name="company" required placeholder="Firma veya işletme adı" autocomplete="organization">
+          <label for="email">E-posta</label>
+          <input type="email" id="email" name="email" required placeholder="ornek@firma.com" autocomplete="email">
+          <label for="phone">Telefon</label>
+          <input type="tel" id="phone" name="phone" required placeholder="+90 5XX XXX XX XX" autocomplete="tel">
+          <label for="message">Mesajınız</label>
+          <textarea id="message" name="message" rows="4" placeholder="İhtiyaçlarınızı kısaca yazın..." required></textarea>
+          <button type="submit" class="btn-primary">Gönder</button>
+        </form>
+        <p class="contact__form-feedback" id="form-feedback" aria-live="polite" hidden></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- WhatsApp Floating Action Button -->
+  <a href="https://wa.me/905551234567" class="fab fab--whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp ile iletişime geç">
+    <svg class="fab__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
